@@ -5,14 +5,8 @@
     android:orientation="vertical" >
 
     <fragment
-        android:id="@+id/creationFragment"
-        android:name="com.primerworldapps.seeker.fragments.CreateAccountFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <fragment
-        android:id="@+id/fractionFragment"
-        android:name="com.primerworldapps.seeker.fragments.FractionSelectionFragment"
+        android:id="@+id/scanFragment"
+        android:name="com.primerworldapps.seeker.fragments.ScanSeekerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

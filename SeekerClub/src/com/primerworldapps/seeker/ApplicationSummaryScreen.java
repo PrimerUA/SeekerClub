@@ -129,8 +129,6 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 				summaryStatusText.setVisibility(View.VISIBLE);
 				summaryStatusText.setText(getString(R.string.connection_check));
 				locationSearchTask();
-				// startActivity(new Intent(getActivity(),
-				// SeekerHolderScreen.class));
 			}
 
 		});
@@ -158,6 +156,7 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 		mProgressBar.setVisibility(View.GONE);
 		summaryStatusText.setVisibility(View.GONE);
 		Toast.makeText(this, location.getLatitude() + ":" + location.getLongitude(), Toast.LENGTH_SHORT).show();
+		startActivity(new Intent(this, SeekerHolderScreen.class));
 		// TO-DO: send data to server
 	}
 

@@ -77,6 +77,9 @@
     <string name="connection_check">Проверка подключения...</string>
     <string name="location_check">Определяем Ваши координаты...</string>
     <string name="posting_to_server">Создание заявки...</string>
+    <string name="scanner_abort">Остановить поиск</string>
+    <string name="scanner_searching">Идет поиск по указанным параметрам...</string>
+    <string name="scanner_time">Время до завершения поиска:</string>
     
 
 </resources>
