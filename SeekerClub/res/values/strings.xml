@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Seeker Club</string>
+    <string name="welcome_text">Приветствуем Вас\nв клубе для избранных,</string>
+    <string name="description_text_1">Если Вы:</string>
+    <string name="description_text_2">+ жаждите новых знакомств\n+ не боитесь реальных встреч\n+ хотите в мир приключений</string>
+    <string name="description_text_3">Тогда смело жмите:</string>
+    <string name="start">Начать действовать</string>
+    <string name="settings">Настройки аккаунта</string>
+    <string name="vk_auth_button">Вход с помощью VK</string>
+    <string name="skip">Пропустить</string>
+    <string name="step_1">Выберите тему встречи</string>
+    <string name="step_2">Укажите цель поиска</string>
+    <string name="step_3">Метод обратной связи</string>
+    <string name="next">Далее</string>
+    <string name="type_1">Прогуляться по городу</string>
+    <string name="type_2">Посетить заведение</string>
+    <string name="type_3">Выпить вместе кофе</string>
+    <string name="type_4">Посетить мероприятие</string>
+    <string name="type_5">Поесть вместе</string>
+    <string name="type_6">Посмотреть на звезды</string>
+    <string name="type_7">На месте решим</string>
+    <string name="male">Парня</string>
+    <string name="female">Девушку</string>
+    <string name="seeker_gender">Кого хотите найти:</string>
+    <string name="seeker_age">Желанный возраст:</string>
+
+    <string-array name="age">
+        <item>Младше 18</item>
+        <item>18 - 21</item>
+        <item>22 - 25</item>
+        <item>26 - 29</item>
+        <item>Старше 29</item>
+    </string-array>
+
+    <string name="postApplication">Запустить сканер на час</string>
+    <string name="callback_description">Выберите как Ваша цель сможет выйти на свзяь:</string>
+    <string name="via_email">C помощью e-mail</string>
+    <string name="via_phone">C помощью мобильного</string>
+    <string name="via_social">C помощью соц-сети</string>
+    <string name="hint_phone">+380(XX)-XXX-XX-XX</string>
+    <string name="hint_email">ilove@seekerclub.com</string>
+    <string name="hint_social">vk.com/seeker_club</string>
+    <string name="login">Войти</string>
+    <string name="register">Я - новый Seeker</string>
+    <string name="my_treat">Я угощаю</string>
+    <string name="select_your_gender">Укажите свой пол:</string>
+    <string name="select_fraction">Выберите фракцию:</string>
+    <string name="finishSignIn">Создать аккаунт</string>
+    <string name="reg_step_1">Вход в клуб для избранных</string>
+    <string name="reg_step_2">Заявка на вступление</string>
+    <string name="reg_step_3">Выберите фракцию</string>
+    <string name="create_user">Создать и войти</string>
+    <string name="hint_name">Представьтесь, пожалуйста</string>
+    <string name="hint_new_email">Ваша электронная почта</string>
+    <string name="hint_password">Ваш пароль</string>
+    <string name="hint_confirm_password">Подтвердите Ваш пароль</string>
+    <string name="hint_age">Укажите возрастной диапазон</string>
+    <string name="prompt_age">Ваш возраст:</string>
+    <string name="chosen_theme">Тема встречи:</string>
+    <string name="chosen_treat">Я угощаю:</string>
+    <string name="treat_yes">Да, с удовольствием</string>
+    <string name="treat_no">Не в этот раз</string>
+    <string name="chosen_gender">Кого ищу:</string>
+    <string name="chosen_age">Возраст:</string>
+    <string name="chosen_callback">Связь:</string>
+    <string name="reviseApplication">Просмотреть заявку</string>
+    <string name="age_1">Младше 18</string>
+    <string name="age_2">18-21</string>
+    <string name="age_3">22-25</string>
+    <string name="age_4">26-29</string>
+    <string name="age_5">Старше 29</string>
+    <string name="back">Назад</string>
+    <string name="application_summary">Ваша заявка</string>
+    <string name="application_summary_check">Проверьте Вашу заявку</string>
+    <string name="connection_check">Проверка подключения...</string>
+    <string name="location_check">Определяем Ваши координаты...</string>
+    <string name="posting_to_server">Создание заявки...</string>
+    
+
+</resources>
