@@ -115,7 +115,7 @@ public class UserLoginFragment extends SherlockFragment {
 			public void onClick(View v) {
 				NewAccountHolderScreen newAccountHolderScreen = (NewAccountHolderScreen) getActivity();
 				newAccountHolderScreen.showFragment(1, false);
-				SeekerUser.getInstance().setName("Михаил").setAge(1).setEmail("ololo@ololo.com").setPassword("1111").setGender(true);
+				SeekerUser.getInstance().setName("Михаил").setAge(1).setEmail("ololo@ololo.com").setPassword("1111").setMale(true);
 			//TO-DO: check credentials on the server
 			}
 		});		

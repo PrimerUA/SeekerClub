@@ -2,6 +2,9 @@ package com.primerworldapps.seeker.entity;
 
 public class SeekerApplication {
 
+	private int id;
+	private int user_id;
+	
 	private double latitude;
 	private double longitude;
 
@@ -56,7 +59,7 @@ public class SeekerApplication {
 		return gender;
 	}
 
-	public SeekerApplication setGender(boolean gender) {
+	public SeekerApplication setMale(boolean gender) {
 		this.gender = gender;
 		return instance;
 	}
@@ -87,4 +90,13 @@ public class SeekerApplication {
 		this.myTreat = myTreat;
 		return instance;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getUserId() {
+		return user_id;
+	}
+
 }

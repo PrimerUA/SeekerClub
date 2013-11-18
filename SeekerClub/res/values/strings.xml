@@ -80,6 +80,8 @@
     <string name="scanner_abort">Остановить поиск</string>
     <string name="scanner_searching">Идет поиск по указанным параметрам...</string>
     <string name="scanner_time">Время до завершения поиска:</string>
+    <string name="noti_scanner_title">Сканирование запущено</string>
+    <string name="noti_scanner_text">Ожидаем заявок от других пользователей</string>
     
 
 </resources>

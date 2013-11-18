@@ -38,7 +38,7 @@ public class SecondStepFragment extends SherlockFragment {
 
 			@Override
 			public void onClick(View v) {
-				SeekerApplication.getInstance().setAge(age).setGender(isMale);
+				SeekerApplication.getInstance().setAge(age).setMale(isMale);
 				MeetingStepsHolderScreen meetingStepsHolderScreen = (MeetingStepsHolderScreen) getActivity();
 				meetingStepsHolderScreen.showFragment(2, true);
 			}
@@ -56,8 +56,8 @@ public class SecondStepFragment extends SherlockFragment {
 		ageSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1, int age, long arg3) {
-				switch (age) {
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int selectedAge, long arg3) {
+				switch (selectedAge) {
 				case 0: {
 					age = 0;
 					break;
@@ -83,6 +83,7 @@ public class SecondStepFragment extends SherlockFragment {
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
+				age = 1;
 			}
 		});
 

@@ -2,6 +2,8 @@ package com.primerworldapps.seeker.entity;
 
 public class SeekerUser {
 
+	private int id;
+	
 	private String name;
 	private String city;
 	private String country;
@@ -12,6 +14,8 @@ public class SeekerUser {
 	private int age;
 	private boolean gender;
 
+	private double rating = 0;
+	private int type = 0; //fractions numbers = 0,1,2
 	private static SeekerUser instance = null;
 
 	protected SeekerUser() {
@@ -83,8 +87,29 @@ public class SeekerUser {
 		return gender;
 	}
 
-	public SeekerUser setGender(boolean gender) {
+	public SeekerUser setMale(boolean gender) {
 		this.gender = gender;
+		return instance;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public SeekerUser setRating(double rating) {
+		this.rating = rating;
 		return instance;
 	}
 

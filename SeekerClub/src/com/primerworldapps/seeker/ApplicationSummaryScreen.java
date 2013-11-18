@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.primerworldapps.seeker.entity.SeekerApplication;
+import com.primerworldapps.seeker.services.ScannerService;
 
 public class ApplicationSummaryScreen extends SherlockActivity implements LocationListener {
 
@@ -155,9 +156,13 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 		summaryStatusText.setText(getString(R.string.posting_to_server));
 		mProgressBar.setVisibility(View.GONE);
 		summaryStatusText.setVisibility(View.GONE);
+		
 		Toast.makeText(this, location.getLatitude() + ":" + location.getLongitude(), Toast.LENGTH_SHORT).show();
-		startActivity(new Intent(this, SeekerHolderScreen.class));
-		// TO-DO: send data to server
+		
+		Intent service = new Intent(this, ScannerService.class);
+		service.putExtra("noti_title", getString(R.string.noti_scanner_title));
+		service.putExtra("noti_text", getString(R.string.noti_scanner_text));
+	    startService(service);
 	}
 
 	@Override
