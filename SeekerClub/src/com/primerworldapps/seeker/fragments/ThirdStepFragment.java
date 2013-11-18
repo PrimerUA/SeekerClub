@@ -23,13 +23,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.primerworldapps.entity.SeekerApplication;
+import com.primerworldapps.entity.SeekerUser;
 import com.primerworldapps.seeker.ApplicationSummaryScreen;
 import com.primerworldapps.seeker.MeetingStepsHolderScreen;
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.SeekerHolderScreen;
 import com.primerworldapps.seeker.WelcomeScreen;
-import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.entity.SeekerUser;
 
 public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 

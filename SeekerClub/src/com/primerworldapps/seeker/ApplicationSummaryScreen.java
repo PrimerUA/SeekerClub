@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.primerworldapps.seeker.entity.SeekerApplication;
+import com.primerworldapps.entity.SeekerApplication;
 
 public class ApplicationSummaryScreen extends SherlockActivity implements LocationListener {
 

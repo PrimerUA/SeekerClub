@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.primerworldapps.seeker.entity.SeekerApplication;
+import com.primerworldapps.entity.SeekerApplication;
 import com.primerworldapps.seeker.fragments.CreateAccountFragment;
 import com.primerworldapps.seeker.fragments.FractionSelectionFragment;
 import com.primerworldapps.seeker.fragments.UserLoginFragment;

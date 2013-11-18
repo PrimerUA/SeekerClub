@@ -14,9 +14,9 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.primerworldapps.entity.SeekerApplication;
 import com.primerworldapps.seeker.MeetingStepsHolderScreen;
 import com.primerworldapps.seeker.R;
-import com.primerworldapps.seeker.entity.SeekerApplication;
 
 public class SecondStepFragment extends SherlockFragment {
 
