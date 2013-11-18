@@ -54,10 +54,15 @@ public class UserLoginFragment extends SherlockFragment {
 			public void onClick(View v) {
 				NewAccountHolderScreen newAccountHolderScreen = (NewAccountHolderScreen) getActivity();
 				newAccountHolderScreen.showFragment(1, false);
+<<<<<<< HEAD
 				SeekerUser.getInstance().setName("Михаил").setAge(1)
 						.setEmail("ololo@ololo.com").setPassword("1111")
 						.setGender(true);
 				// TO-DO: check credentials on the server
+=======
+				SeekerUser.getInstance().setName("Михаил").setAge(1).setEmail("ololo@ololo.com").setPassword("1111").setMale(true);
+			//TO-DO: check credentials on the server
+>>>>>>> 9bc81351750be199be4a4d10eae0b1873b1cc1fd
 			}
 		});
 	}

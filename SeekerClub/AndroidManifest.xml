@@ -9,14 +9,17 @@
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.Internet" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
+        <service android:name="ScannerService" >
+        </service>
 
         <activity
             android:name="com.primerworldapps.seeker.WelcomeScreen"
@@ -64,6 +67,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <receiver android:name="ApplicationReceiver" />
     </application>
 
 </manifest>
