@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.entity;
+package com.primerworldapps.entity;
 
 public class SeekerApplication {
 
