@@ -1,6 +1,5 @@
-package com.primerworldapps.seeker;
+package com.primerworldapps.seeker.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,13 +8,12 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.primerworldapps.seeker.fragments.FirstStepFragment;
-import com.primerworldapps.seeker.fragments.SecondStepFragment;
-import com.primerworldapps.seeker.fragments.ThirdStepFragment;
+import com.primerworldapps.seeker.R;
+import com.primerworldapps.seeker.view.fragments.ScanSeekerFragment;
 
-public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
+public class SeekerHolderScreen extends SherlockFragmentActivity {
 
-	private final int STEPS = 3;
+	private final int STEPS = 1; //change
 	private Fragment[] fragments = new Fragment[STEPS];
 
 	private int currentFragment;
@@ -23,16 +21,16 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.meeting_holder_screen);
+		setContentView(R.layout.seeker_holder_screen);
 
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//		getSupportActionBar().setHomeButtonEnabled(true);
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		FragmentManager fm = getSupportFragmentManager();
-		FirstStepFragment startFragment = (FirstStepFragment) fm.findFragmentById(R.id.firstFragment);
+		ScanSeekerFragment startFragment = (ScanSeekerFragment) fm.findFragmentById(R.id.scanFragment);
 		fragments[0] = startFragment;
-		fragments[1] = (SecondStepFragment) fm.findFragmentById(R.id.secondFragment);
-		fragments[2] = (ThirdStepFragment) fm.findFragmentById(R.id.thirdFragment);
+		//fragments[1] = (CreateAccountFragment) fm.findFragmentById(R.id.creationFragment);
+		//fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
 
 		FragmentTransaction transaction = fm.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {
@@ -50,7 +48,7 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 			}
 		});
 	}
-	
+
 	public void showFragment(int fragmentIndex, boolean addToBackStack) {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
@@ -65,11 +63,11 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 			transaction.addToBackStack(null);
 		}
 		if (fragmentIndex == 0) {
-			getSupportActionBar().setTitle(getString(R.string.step_1));
+			getSupportActionBar().setTitle(getString(R.string.scan_1));
 		} else if (fragmentIndex == 1) {
-			getSupportActionBar().setTitle(getString(R.string.step_2));
+			getSupportActionBar().setTitle(getString(R.string.scan_2));
 		} else {
-			getSupportActionBar().setTitle(getString(R.string.step_3));
+			getSupportActionBar().setTitle(getString(R.string.scan_3));
 		}
 		currentFragment = fragmentIndex;
 		transaction.commit();
@@ -79,7 +77,7 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		default: {
-			backButton();
+			//backButton();
 		}
 		}
 		return true;
@@ -96,7 +94,7 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-		backButton();
+		//backButton();
 	}
 	
 }

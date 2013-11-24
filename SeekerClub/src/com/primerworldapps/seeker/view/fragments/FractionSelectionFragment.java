@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.fragments;
+package com.primerworldapps.seeker.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.primerworldapps.seeker.NewAccountHolderScreen;
+import com.primerworldapps.seeker.view.NewAccountHolderScreen;
 import com.primerworldapps.seeker.R;
 
 public class FractionSelectionFragment extends SherlockFragment {

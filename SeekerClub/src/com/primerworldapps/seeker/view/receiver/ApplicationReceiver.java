@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.receiver;
+package com.primerworldapps.seeker.view.receiver;
 
 import com.primerworldapps.seeker.services.ScannerService;
 

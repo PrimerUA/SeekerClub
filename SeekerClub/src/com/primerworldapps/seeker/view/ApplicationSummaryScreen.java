@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker;
+package com.primerworldapps.seeker.view;
 
 import android.content.Intent;
 import android.location.Location;
@@ -14,8 +14,9 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.services.ScannerService;
+import com.primerworldapps.seeker.view.services.ScannerService;
 
 public class ApplicationSummaryScreen extends SherlockActivity implements LocationListener {
 

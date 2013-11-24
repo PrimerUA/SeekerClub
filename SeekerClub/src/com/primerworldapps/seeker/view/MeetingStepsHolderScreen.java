@@ -1,5 +1,6 @@
-package com.primerworldapps.seeker;
+package com.primerworldapps.seeker.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,12 +9,12 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.fragments.CreateAccountFragment;
-import com.primerworldapps.seeker.fragments.FractionSelectionFragment;
-import com.primerworldapps.seeker.fragments.UserLoginFragment;
+import com.primerworldapps.seeker.R;
+import com.primerworldapps.seeker.view.fragments.FirstStepFragment;
+import com.primerworldapps.seeker.view.fragments.SecondStepFragment;
+import com.primerworldapps.seeker.view.fragments.ThirdStepFragment;
 
-public class NewAccountHolderScreen extends SherlockFragmentActivity {
+public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 
 	private final int STEPS = 3;
 	private Fragment[] fragments = new Fragment[STEPS];
@@ -23,16 +24,16 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.new_account_holder_screen);
+		setContentView(R.layout.meeting_holder_screen);
 
-//		getSupportActionBar().setHomeButtonEnabled(true);
-//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		FragmentManager fm = getSupportFragmentManager();
-		UserLoginFragment startFragment = (UserLoginFragment) fm.findFragmentById(R.id.loginFragment);
+		FirstStepFragment startFragment = (FirstStepFragment) fm.findFragmentById(R.id.firstFragment);
 		fragments[0] = startFragment;
-		fragments[1] = (CreateAccountFragment) fm.findFragmentById(R.id.creationFragment);
-		fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
+		fragments[1] = (SecondStepFragment) fm.findFragmentById(R.id.secondFragment);
+		fragments[2] = (ThirdStepFragment) fm.findFragmentById(R.id.thirdFragment);
 
 		FragmentTransaction transaction = fm.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {
@@ -50,7 +51,7 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 			}
 		});
 	}
-
+	
 	public void showFragment(int fragmentIndex, boolean addToBackStack) {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
@@ -65,11 +66,11 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 			transaction.addToBackStack(null);
 		}
 		if (fragmentIndex == 0) {
-			getSupportActionBar().setTitle(getString(R.string.reg_step_1));
+			getSupportActionBar().setTitle(getString(R.string.step_1));
 		} else if (fragmentIndex == 1) {
-			getSupportActionBar().setTitle(getString(R.string.reg_step_2));
+			getSupportActionBar().setTitle(getString(R.string.step_2));
 		} else {
-			getSupportActionBar().setTitle(getString(R.string.reg_step_3));
+			getSupportActionBar().setTitle(getString(R.string.step_3));
 		}
 		currentFragment = fragmentIndex;
 		transaction.commit();
@@ -79,7 +80,7 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		default: {
-			//backButton();
+			backButton();
 		}
 		}
 		return true;
@@ -96,7 +97,7 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-		//backButton();
+		backButton();
 	}
-
+	
 }

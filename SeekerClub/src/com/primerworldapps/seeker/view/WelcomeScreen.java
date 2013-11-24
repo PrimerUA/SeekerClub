@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker;
+package com.primerworldapps.seeker.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
+<<<<<<< HEAD:SeekerClub/src/com/primerworldapps/seeker/WelcomeScreen.java
 import com.primerworldapps.seeker.entity.SeekerUser;
 import com.primerworldapps.seeker.util.PreferencesController;
+=======
+import com.primerworldapps.seeker.R;
+>>>>>>> 3fc692dc5ac95afeb8716dcfb98b13414a588ace:SeekerClub/src/com/primerworldapps/seeker/view/WelcomeScreen.java
 
 public class WelcomeScreen extends SherlockActivity {
 
