@@ -8,22 +8,27 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.primerworldapps.seeker.entity.SeekerUser;
+import com.primerworldapps.seeker.util.PreferencesController;
 
 public class WelcomeScreen extends SherlockActivity {
 
 	private Button startButton;
 	private TextView userNameText;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome_screen);
-
 		getSupportActionBar().hide();
+		
 		initScreen();
-		//if user not logined show login screen
-		startActivity(new Intent(WelcomeScreen.this, NewAccountHolderScreen.class));
-		//else show this screen
+		
+		PreferencesController.getInstance().init(this);
+		if (!SeekerUser.getInstance().isLoggedIn()) {
+			startActivity(new Intent(WelcomeScreen.this, NewAccountHolderScreen.class));
+		}
+		// else show this screen
 	}
 
 	private void initScreen() {
@@ -32,11 +37,27 @@ public class WelcomeScreen extends SherlockActivity {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(WelcomeScreen.this, MeetingStepsHolderScreen.class));
+				startActivityForResult(new Intent(WelcomeScreen.this, MeetingStepsHolderScreen.class), 0);
 			}
 		});
-		
+
 		userNameText = (TextView) findViewById(R.id.userName_welcomeText);
-		userNameText.setText("Михаил");
+		userNameText.setText(SeekerUser.getInstance().getName());
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (resultCode) {
+		case 0:
+			setResult(0);
+			finish();
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		userNameText.setText(SeekerUser.getInstance().getName());
 	}
 }

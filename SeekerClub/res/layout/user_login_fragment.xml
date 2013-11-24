@@ -13,44 +13,11 @@
         android:layout_marginBottom="50dp"
         android:src="@drawable/appname" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:ems="10"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:ems="10"
-        android:hint="@string/prompt_password"
-        android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:text="@string/login"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/signUpButton"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register" />
+   <com.google.android.gms.common.SignInButton
+       android:id="@+id/login_button"
+       android:layout_width="150dp"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="@dimen/abs__action_button_min_width"
+       android:layout_marginTop="@dimen/abs__dropdownitem_icon_width" />
 
 </LinearLayout>

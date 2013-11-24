@@ -3,14 +3,11 @@ package com.primerworldapps.seeker.entity;
 public class SeekerUser {
 
 	private int id;
+	private boolean isLoggedIn;
 	
 	private String name;
-	private String city;
-	private String country;
 	
 	private String email;
-	private String password;
-	
 	private int age;
 	private boolean gender;
 
@@ -38,39 +35,12 @@ public class SeekerUser {
 		return instance;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
-	public SeekerUser setCity(String city) {
-		this.city = city;
-		return instance;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public SeekerUser setCountry(String country) {
-		this.country = country;
-		return instance;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public SeekerUser setEmail(String email) {
 		this.email = email;
-		return instance;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public SeekerUser setPassword(String password) {
-		this.password = password;
 		return instance;
 	}
 
@@ -100,6 +70,11 @@ public class SeekerUser {
 		this.type = type;
 	}
 
+	public SeekerUser setId(int id) {
+		this.id = id;
+		return instance;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -111,6 +86,14 @@ public class SeekerUser {
 	public SeekerUser setRating(double rating) {
 		this.rating = rating;
 		return instance;
+	}
+
+	public boolean isLoggedIn() {
+		return isLoggedIn;
+	}
+
+	public void setLoggedIn(boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
 	}
 
 }

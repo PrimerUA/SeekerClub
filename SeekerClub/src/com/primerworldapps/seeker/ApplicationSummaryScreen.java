@@ -158,11 +158,8 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 		summaryStatusText.setVisibility(View.GONE);
 		
 		Toast.makeText(this, location.getLatitude() + ":" + location.getLongitude(), Toast.LENGTH_SHORT).show();
-		
-		Intent service = new Intent(this, ScannerService.class);
-		service.putExtra("noti_title", getString(R.string.noti_scanner_title));
-		service.putExtra("noti_text", getString(R.string.noti_scanner_text));
-	    startService(service);
+		//startActivity(new Intent(this, SeekerHolderScreen.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+		startActivityForResult(new Intent(this, SeekerHolderScreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), 0);
 	}
 
 	@Override
@@ -190,5 +187,15 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 			Intent wirelessSettingsIntent = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
 			startActivity(wirelessSettingsIntent);
 		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (resultCode) {
+		case 0:
+			setResult(0);
+			finish();
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }

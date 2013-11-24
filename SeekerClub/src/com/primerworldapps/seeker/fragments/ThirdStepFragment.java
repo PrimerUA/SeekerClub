@@ -1,8 +1,5 @@
 package com.primerworldapps.seeker.fragments;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,25 +8,17 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.primerworldapps.seeker.ApplicationSummaryScreen;
-import com.primerworldapps.seeker.MeetingStepsHolderScreen;
 import com.primerworldapps.seeker.R;
-import com.primerworldapps.seeker.SeekerHolderScreen;
-import com.primerworldapps.seeker.WelcomeScreen;
 import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.entity.SeekerUser;
 
 public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 
@@ -65,7 +54,8 @@ public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 			@Override
 			public void onClick(View v) {
 				SeekerApplication.getInstance().setContact(contact);
-				startActivity(new Intent(getActivity(), ApplicationSummaryScreen.class));
+				Intent seekerHolderIntent = new Intent(getActivity(), ApplicationSummaryScreen.class);
+				startActivity(seekerHolderIntent);
 			}
 		});
 		previewButton.setEnabled(false);

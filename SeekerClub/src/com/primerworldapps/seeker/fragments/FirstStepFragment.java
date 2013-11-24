@@ -35,7 +35,7 @@ public class FirstStepFragment extends SherlockFragment {
 	private TextView textTypeFive;
 	private TextView textTypeSix;
 	private TextView textTypeSeven;
-
+	
 	private CheckBox myTreatCheckBox;
 
 	private View view;
@@ -90,7 +90,8 @@ public class FirstStepFragment extends SherlockFragment {
 		});
 
 		typeface = textTypeSeven.getTypeface();
-
+		textTypeOne.setText("[ " + textTypeOne.getText() + " ]");
+		
 		layoutTypeOne.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -98,6 +99,7 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeOne.setTypeface(null, Typeface.BOLD);
 				textTypeOne.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeOne.setText("[ " + textTypeOne.getText() + " ]");
 				type = 1;
 			}
 		});
@@ -109,6 +111,7 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeTwo.setTypeface(null, Typeface.BOLD);
 				textTypeTwo.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeTwo.setText("[ " + textTypeTwo.getText() + " ]");
 				type = 2;
 			}
 		});
@@ -120,6 +123,7 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeThree.setTypeface(null, Typeface.BOLD);
 				textTypeThree.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeThree.setText("[ " + textTypeThree.getText() + " ]");
 				type = 3;
 			}
 		});
@@ -131,6 +135,7 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeFour.setTypeface(null, Typeface.BOLD);
 				textTypeFour.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeFour.setText("[ " + textTypeFour.getText() + " ]");
 				type = 4;
 			}
 		});
@@ -142,6 +147,7 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeFive.setTypeface(null, Typeface.BOLD);
 				textTypeFive.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeFive.setText("[ " + textTypeFive.getText() + " ]");
 				type = 5;
 			}
 		});
@@ -153,6 +159,7 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeSix.setTypeface(null, Typeface.BOLD);
 				textTypeSix.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeSix.setText("[ " + textTypeSix.getText() + " ]");
 				type = 6;
 			}
 		});
@@ -164,12 +171,21 @@ public class FirstStepFragment extends SherlockFragment {
 				configureScreen();
 				textTypeSeven.setTypeface(null, Typeface.BOLD);
 				textTypeSeven.setTextColor(getResources().getColor(R.color.selected_text));
+				textTypeSeven.setText("[ " + textTypeSeven.getText() + " ]");
 				type = 7;
 			}
 		});
 	}
 
 	protected void configureScreen() {
+		textTypeOne.setText(getString(R.string.type_1));
+		textTypeTwo.setText(getString(R.string.type_2));
+		textTypeThree.setText(getString(R.string.type_3));
+		textTypeFour.setText(getString(R.string.type_4));
+		textTypeFive.setText(getString(R.string.type_5));
+		textTypeSix.setText(getString(R.string.type_6));
+		textTypeSeven.setText(getString(R.string.type_7));
+		
 		textTypeOne.setTypeface(typeface, Typeface.NORMAL);
 		textTypeTwo.setTypeface(typeface, Typeface.NORMAL);
 		textTypeThree.setTypeface(typeface, Typeface.NORMAL);

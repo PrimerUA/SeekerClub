@@ -14,11 +14,11 @@
     <string name="step_2">Укажите цель поиска</string>
     <string name="step_3">Метод обратной связи</string>
     <string name="next">Далее</string>
-    <string name="type_1">Прогуляться по городу</string>
-    <string name="type_2">Посетить заведение</string>
-    <string name="type_3">Выпить вместе кофе</string>
-    <string name="type_4">Посетить мероприятие</string>
-    <string name="type_5">Поесть вместе</string>
+    <string name="type_1">Поесть вместе</string>
+    <string name="type_2">Прогуляться по городу</string>
+    <string name="type_3">Посетить заведение</string>
+    <string name="type_4">Выпить вместе кофе</string>
+    <string name="type_5">Посетить мероприятие</string>
     <string name="type_6">Посмотреть на звезды</string>
     <string name="type_7">На месте решим</string>
     <string name="male">Парня</string>
@@ -49,9 +49,9 @@
     <string name="select_fraction">Выберите фракцию:</string>
     <string name="finishSignIn">Создать аккаунт</string>
     <string name="reg_step_1">Вход в клуб для избранных</string>
-    <string name="reg_step_2">Заявка на вступление</string>
+    <string name="reg_step_2">Дисклеймер</string>
     <string name="reg_step_3">Выберите фракцию</string>
-    <string name="create_user">Создать и войти</string>
+    <string name="create_user">Подтвердить вступление в клуб</string>
     <string name="hint_name">Представьтесь, пожалуйста</string>
     <string name="hint_new_email">Ваша электронная почта</string>
     <string name="hint_password">Ваш пароль</string>
@@ -82,6 +82,11 @@
     <string name="scanner_time">Время до завершения поиска:</string>
     <string name="noti_scanner_title">Сканирование запущено</string>
     <string name="noti_scanner_text">Ожидаем заявок от других пользователей</string>
+    <string name="scan_1">Поиск кандидата</string>
+    <string name="scan_2">Выбор кандидата</string>
+    <string name="scan_3">Оценка кандидата</string>
+    <string name="disclaimer">Я понимаю, что самостоятельно несу полную ответственность за любые последствия встреч с помошью данного приложения, а также за разглашение собственных персональных данных</string>
+    <string name="sign_out">Выход</string>
     
 
 </resources>

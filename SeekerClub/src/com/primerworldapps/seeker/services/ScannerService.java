@@ -33,7 +33,7 @@ public class ScannerService extends Service {
 
 		showNotification(intent);
 
-		startActivity(new Intent(this, SeekerHolderScreen.class));
+		
 		return Service.START_STICKY;
 	}
 

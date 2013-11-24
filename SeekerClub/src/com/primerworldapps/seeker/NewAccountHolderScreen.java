@@ -25,8 +25,8 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_account_holder_screen);
 
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//		getSupportActionBar().setHomeButtonEnabled(true);
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		FragmentManager fm = getSupportFragmentManager();
 		UserLoginFragment startFragment = (UserLoginFragment) fm.findFragmentById(R.id.loginFragment);
@@ -79,7 +79,7 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		default: {
-			backButton();
+			//backButton();
 		}
 		}
 		return true;
@@ -96,7 +96,7 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-		backButton();
+		//backButton();
 	}
 
 }

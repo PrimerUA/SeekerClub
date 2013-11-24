@@ -1,5 +1,6 @@
 package com.primerworldapps.seeker.fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,28 +58,7 @@ public class SecondStepFragment extends SherlockFragment {
 
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int selectedAge, long arg3) {
-				switch (selectedAge) {
-				case 0: {
-					age = 0;
-					break;
-				}
-				case 1: {
-					age = 1;
-					break;
-				}
-				case 2: {
-					age = 2;
-					break;
-				}
-				case 3: {
-					age = 3;
-					break;
-				}
-				case 4: {
-					age = 4;
-					break;
-				}
-				}
+				age = selectedAge;
 			}
 
 			@Override
@@ -87,6 +67,9 @@ public class SecondStepFragment extends SherlockFragment {
 			}
 		});
 
+		genderMale.setTextColor(getResources().getColor(R.color.selected_text));
+		genderMale.setTypeface(null, Typeface.BOLD);
+		
 		genderFemale.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
@@ -94,6 +77,10 @@ public class SecondStepFragment extends SherlockFragment {
 				if (isChecked) {
 					isMale = false;
 					genderMale.setChecked(isMale);
+					genderFemale.setTextColor(getResources().getColor(R.color.selected_text));
+					genderFemale.setTypeface(null, Typeface.BOLD);
+					genderMale.setTextColor(getResources().getColor(android.R.color.white));
+					genderMale.setTypeface(null, Typeface.NORMAL);
 				}
 			}
 		});
@@ -105,6 +92,10 @@ public class SecondStepFragment extends SherlockFragment {
 				if (isChecked) {
 					isMale = true;
 					genderFemale.setChecked(!isMale);
+					genderMale.setTextColor(getResources().getColor(R.color.selected_text));
+					genderMale.setTypeface(null, Typeface.BOLD);
+					genderFemale.setTextColor(getResources().getColor(android.R.color.white));
+					genderFemale.setTypeface(null, Typeface.NORMAL);
 				}
 			}
 		});

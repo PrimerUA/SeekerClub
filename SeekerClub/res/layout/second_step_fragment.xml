@@ -34,20 +34,26 @@
                 android:id="@+id/radioGroup1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/d5p"
                 android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/radio_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/d5p"
                     android:checked="true"
-                    android:text="@string/male" />
+                    android:text="@string/male"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <RadioButton
                     android:id="@+id/radio_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/female" />
+                    android:layout_marginLeft="@dimen/d5p"
+                    android:text="@string/female"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
             </RadioGroup>
 
             <TextView

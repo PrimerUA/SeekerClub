@@ -22,8 +22,8 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.seeker_holder_screen);
 
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//		getSupportActionBar().setHomeButtonEnabled(true);
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		FragmentManager fm = getSupportFragmentManager();
 		ScanSeekerFragment startFragment = (ScanSeekerFragment) fm.findFragmentById(R.id.scanFragment);
@@ -62,11 +62,11 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 			transaction.addToBackStack(null);
 		}
 		if (fragmentIndex == 0) {
-			getSupportActionBar().setTitle(getString(R.string.reg_step_1));
+			getSupportActionBar().setTitle(getString(R.string.scan_1));
 		} else if (fragmentIndex == 1) {
-			getSupportActionBar().setTitle(getString(R.string.reg_step_2));
+			getSupportActionBar().setTitle(getString(R.string.scan_2));
 		} else {
-			getSupportActionBar().setTitle(getString(R.string.reg_step_3));
+			getSupportActionBar().setTitle(getString(R.string.scan_3));
 		}
 		currentFragment = fragmentIndex;
 		transaction.commit();
@@ -76,7 +76,7 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		default: {
-			backButton();
+			//backButton();
 		}
 		}
 		return true;
@@ -93,7 +93,7 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-		backButton();
+		//backButton();
 	}
-
+	
 }
