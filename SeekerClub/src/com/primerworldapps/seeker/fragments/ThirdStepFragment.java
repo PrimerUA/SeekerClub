@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.view.fragments;
+package com.primerworldapps.seeker.fragments;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -16,9 +16,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.primerworldapps.seeker.ApplicationSummaryScreen;
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.view.ApplicationSummaryScreen;
 
 public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 

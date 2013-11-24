@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.view;
+package com.primerworldapps.seeker;
 
 import android.content.Intent;
 import android.location.Location;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.entity.SeekerApplication;
 import com.primerworldapps.seeker.services.ScannerService;
 

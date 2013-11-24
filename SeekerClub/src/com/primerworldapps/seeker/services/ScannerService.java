@@ -12,8 +12,8 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 
-import com.primerworldapps.seeker.view.SeekerHolderScreen;
-import com.primerworldapps.seeker.view.receiver.ApplicationReceiver;
+import com.primerworldapps.seeker.SeekerHolderScreen;
+import com.primerworldapps.seeker.receiver.ApplicationReceiver;
 
 public class ScannerService extends Service {
 

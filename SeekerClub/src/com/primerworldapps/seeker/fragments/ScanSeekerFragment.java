@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.view.fragments;
+package com.primerworldapps.seeker.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;

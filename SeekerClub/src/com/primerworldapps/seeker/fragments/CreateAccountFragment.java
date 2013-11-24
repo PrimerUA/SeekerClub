@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.view.fragments;
+package com.primerworldapps.seeker.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

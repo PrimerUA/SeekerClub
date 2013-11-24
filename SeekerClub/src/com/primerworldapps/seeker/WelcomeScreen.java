@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.view;
+package com.primerworldapps.seeker;
 
 import android.content.Intent;
 import android.os.Bundle;
