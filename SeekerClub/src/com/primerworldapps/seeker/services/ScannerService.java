@@ -1,4 +1,4 @@
-package com.primerworldapps.seeker.view.services;
+package com.primerworldapps.seeker.services;
 
 import android.R;
 import android.app.Notification;

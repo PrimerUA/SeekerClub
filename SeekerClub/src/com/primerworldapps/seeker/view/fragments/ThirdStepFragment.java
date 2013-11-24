@@ -16,19 +16,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.actionbarsherlock.app.SherlockFragment;
-<<<<<<< HEAD:SeekerClub/src/com/primerworldapps/seeker/fragments/ThirdStepFragment.java
-import com.primerworldapps.seeker.ApplicationSummaryScreen;
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.entity.SeekerApplication;
-=======
-import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.entity.SeekerUser;
 import com.primerworldapps.seeker.view.ApplicationSummaryScreen;
-import com.primerworldapps.seeker.view.MeetingStepsHolderScreen;
-import com.primerworldapps.seeker.R;
-import com.primerworldapps.seeker.view.SeekerHolderScreen;
-import com.primerworldapps.seeker.view.WelcomeScreen;
->>>>>>> 3fc692dc5ac95afeb8716dcfb98b13414a588ace:SeekerClub/src/com/primerworldapps/seeker/view/fragments/ThirdStepFragment.java
 
 public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 
