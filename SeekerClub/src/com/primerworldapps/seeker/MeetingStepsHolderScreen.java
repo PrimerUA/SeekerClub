@@ -52,7 +52,7 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 			}
 		});
 	}
-	
+
 	public void showFragment(int fragmentIndex, boolean addToBackStack) {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
@@ -63,6 +63,7 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 				transaction.hide(fragments[i]);
 			}
 		}
+
 		if (addToBackStack) {
 			transaction.addToBackStack(null);
 		}
@@ -70,10 +71,10 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 			getSupportActionBar().setTitle(getString(R.string.step_1));
 		} else if (fragmentIndex == 1) {
 			getSupportActionBar().setTitle(getString(R.string.step_2));
-		} else if (fragmentIndex == 2){
+		} else if (fragmentIndex == 2) {
 			getSupportActionBar().setTitle(getString(R.string.step_3));
 		} else {
-			fragments[fragmentIndex].onResume();
+			((ApplicationSummaryFragment) fragments[fragmentIndex]).relaunchFragment();
 			getSupportActionBar().setTitle(getString(R.string.application_summary_check));
 		}
 		currentFragment = fragmentIndex;
@@ -96,14 +97,14 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 			showFragment(currentFragment, false);
 		} else {
 			finish();
-		}		
+		}
 	}
 
 	@Override
 	public void onBackPressed() {
 		backButton();
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (resultCode) {
@@ -113,5 +114,5 @@ public class MeetingStepsHolderScreen extends SherlockFragmentActivity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 }

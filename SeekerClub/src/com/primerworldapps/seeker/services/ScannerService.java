@@ -13,7 +13,8 @@ import android.widget.RemoteViews;
 
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.SeekerHolderScreen;
-import com.primerworldapps.seeker.receiver.ApplicationReceiver;
+import com.primerworldapps.seeker.receivers.ApplicationReceiver;
+import com.primerworldapps.seeker.util.Constants;
 
 public class ScannerService extends Service {
 
@@ -30,10 +31,13 @@ public class ScannerService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TO-DO: отправка заявки на сервер
 		// запуск процедуры сканирования на сервере
-		registerReceiver(applicationReceiver, new IntentFilter());
+		
+		registerReceiver(applicationReceiver, new IntentFilter(Constants.BROADCAST_ACTION));
 
 		showNotification(intent);
 
+		// при получение заявки отправка sendBroadcast к ресиверу
+		
 		return Service.START_STICKY;
 	}
 

@@ -81,16 +81,10 @@ public class ApplicationSummaryFragment extends SherlockFragment implements Loca
 			break;
 		}
 		}
-		if (seekerApplication.isMyTreat()) {
-			treatText.setText(R.string.treat_yes);
-		} else {
-			treatText.setText(R.string.treat_no);
-		}
-		if (seekerApplication.isMale()) {
-			genderText.setText(R.string.male);
-		} else {
-			genderText.setText(R.string.female);
-		}
+		
+		treatText.setText(seekerApplication.isMyTreat() ? R.string.treat_yes : R.string.treat_no);
+		genderText.setText(seekerApplication.isMale() ? R.string.male : R.string.female);
+		
 		switch (seekerApplication.getAge()) {
 		case 0: {
 			ageText.setText(getString(R.string.age_1));
@@ -167,8 +161,7 @@ public class ApplicationSummaryFragment extends SherlockFragment implements Loca
 
 	@Override
 	public void onProviderDisabled(String provider) {
-		Toast.makeText(getActivity(), "Provider disbled", Toast.LENGTH_SHORT)
-		.show();
+		Toast.makeText(getActivity(), "Provider disbled", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -197,18 +190,15 @@ public class ApplicationSummaryFragment extends SherlockFragment implements Loca
 		}
 	}
 
-	@Override
-	public void onResume() {
-		super.onResume();
-
+	public void relaunchFragment() {
 		initFragment();
 	}
 
 	private void showNextActivity(Location location) {
 		mLocationManager.removeUpdates(this);
-		
+
 		SeekerApplication.getInstance().setLatitude(location.getLatitude()).setLongitude(location.getLongitude());
-		
+
 		summaryStatusText.setText(getString(R.string.posting_to_server));
 		mProgressBar.setVisibility(View.GONE);
 		summaryStatusText.setVisibility(View.GONE);

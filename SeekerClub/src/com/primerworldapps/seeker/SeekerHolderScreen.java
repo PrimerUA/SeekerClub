@@ -9,14 +9,13 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.primerworldapps.seeker.fragments.ApplicationDetectedFragment;
 import com.primerworldapps.seeker.fragments.ScanSeekerFragment;
 
 public class SeekerHolderScreen extends SherlockFragmentActivity {
 
-	private final int STEPS = 1; //change
+	private final int STEPS = 2; //change
 	private Fragment[] fragments = new Fragment[STEPS];
-
-	private int currentFragment;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,10 +25,15 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 //		getSupportActionBar().setHomeButtonEnabled(true);
 //		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+		initScreen();
+		showFragment(0, true);
+	}
+
+	public void initScreen() {
 		FragmentManager fm = getSupportFragmentManager();
 		ScanSeekerFragment startFragment = (ScanSeekerFragment) fm.findFragmentById(R.id.scanFragment);
 		fragments[0] = startFragment;
-		//fragments[1] = (CreateAccountFragment) fm.findFragmentById(R.id.creationFragment);
+		fragments[1] = (ApplicationDetectedFragment) fm.findFragmentById(R.id.detectedFragment);
 		//fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
 
 		FragmentTransaction transaction = fm.beginTransaction();
@@ -37,7 +41,6 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 			transaction.hide(fragments[i]);
 		}
 		transaction.commit();
-		showFragment(currentFragment = 0, true);
 
 		fm.addOnBackStackChangedListener(new OnBackStackChangedListener() {
 
@@ -69,27 +72,7 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 		} else {
 			getSupportActionBar().setTitle(getString(R.string.scan_3));
 		}
-		currentFragment = fragmentIndex;
 		transaction.commit();
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		default: {
-			//backButton();
-		}
-		}
-		return true;
-	}
-
-	private void backButton() {
-		if (currentFragment != 0) {
-			currentFragment--;
-			showFragment(currentFragment, false);
-		} else {
-			finish();
-		}		
 	}
 
 	@Override

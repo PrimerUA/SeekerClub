@@ -13,7 +13,7 @@ public class SeekerUser {
 	private boolean gender;
 
 	private double rating = 0;
-	private int type = 0; //fractions numbers = 0,1,2
+	private int fractionId = 0; //fractions numbers = 0,1,2
 	private static SeekerUser instance = null;
 
 	protected SeekerUser() {
@@ -64,11 +64,11 @@ public class SeekerUser {
 	}
 
 	public int getType() {
-		return type;
+		return fractionId;
 	}
 
 	public void setType(int type) {
-		this.type = type;
+		this.fractionId = type;
 	}
 
 	public SeekerUser setId(int id) {

@@ -12,6 +12,8 @@ public class SeekerApplication {
 	private boolean myTreat;
 	private boolean gender;
 	private int age;
+	
+	private long time;
 
 	private String contact;
 
@@ -97,6 +99,15 @@ public class SeekerApplication {
 
 	public int getUserId() {
 		return user_id;
+	}
+
+	public long getTime() {
+		return time;
+	}
+
+	public SeekerApplication setTime(long time) {
+		this.time = time;
+		return instance;
 	}
 
 }

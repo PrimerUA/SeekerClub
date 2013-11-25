@@ -1,16 +1,24 @@
 package com.primerworldapps.seeker;
 
+import java.io.InputStream;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.primerworldapps.seeker.entity.SeekerUser;
+import com.primerworldapps.seeker.util.DownloadImageTask;
 import com.primerworldapps.seeker.util.PreferencesController;
-import com.primerworldapps.seeker.R;
 
 public class WelcomeScreen extends SherlockActivity {
 
@@ -22,14 +30,15 @@ public class WelcomeScreen extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome_screen);
 		getSupportActionBar().hide();
-		
+
 		initScreen();
-		
+
 		PreferencesController.getInstance().init(this);
 		if (!SeekerUser.getInstance().isLoggedIn()) {
 			startActivity(new Intent(WelcomeScreen.this, NewAccountHolderScreen.class));
 		}
-		// else show this screen
+		//ImageView testImage = (ImageView) findViewById(R.id.testImage);
+		//new DownloadImageTask(this, testImage).execute("https://plus.google.com/s2/photos/profile/me");
 	}
 
 	private void initScreen() {
@@ -55,10 +64,11 @@ public class WelcomeScreen extends SherlockActivity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
 		userNameText.setText(SeekerUser.getInstance().getName());
 	}
+
 }

@@ -9,5 +9,11 @@
         android:name="com.primerworldapps.seeker.fragments.ScanSeekerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    
+    <fragment
+        android:id="@+id/detectedFragment"
+        android:name="com.primerworldapps.seeker.fragments.ApplicationDetectedFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

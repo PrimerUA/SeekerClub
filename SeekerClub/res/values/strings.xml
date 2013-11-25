@@ -84,12 +84,22 @@
     <string name="noti_scanner_title">Идет сканирование</string>
     <string name="noti_scanner_text">Ожидаение заявок от других пользователей</string>
     <string name="scan_1">Поиск кандидата</string>
-    <string name="scan_2">Выбор кандидата</string>
+    <string name="scan_2">Кандидат найден</string>
     <string name="scan_3">Оценка кандидата</string>
     <string name="disclaimer">Я понимаю, что самостоятельно несу полную ответственность за любые последствия встреч с помошью данного приложения, а также за разглашение собственных персональных данных</string>
     <string name="sign_out">Выход</string>
     <string name="stop_title">Остановить поиск?</string>
     <string name="stop_text">Назначение встречи будет приостановлено</string>
+    <string name="show_photo">Открыть фото</string>
+    <string name="name">Меня зовут:</string>
+    <string name="wants">Я хочу:</string>
+    <string name="confirm_meeting">Хочешь встретиться со мной?</string>
+    <string name="yes">Да!</string>
+    <string name="no">Нет</string>
     
-
+<string name="cancel_title">Отказать данному кандидату?</string>
+    <string name="cancel_text">Будет продолжен поиск новых заявок</string>
+    
+    <string name="agree_title">Подтвердить согласие на встречу?</string>
+    <string name="agree_text">Вы обменяетесь контактными данными с этим пользователем если он также согласиться на встречу</string>
 </resources>
