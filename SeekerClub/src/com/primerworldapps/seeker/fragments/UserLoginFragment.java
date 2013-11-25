@@ -17,6 +17,7 @@ import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailed
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.plus.PlusClient;
+import com.google.android.gms.plus.model.people.Person.Image;
 import com.primerworldapps.seeker.NewAccountHolderScreen;
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.entity.SeekerUser;
@@ -92,18 +93,20 @@ public class UserLoginFragment extends SherlockFragment implements ConnectionCal
 	@Override
 	public void onConnected(Bundle connectionHint) {
 		SeekerUser.getInstance().setEmail(mPlusClient.getAccountName())
+				.setGoogleId(mPlusClient.getCurrentPerson().getId())
 				.setName(mPlusClient.getCurrentPerson().getDisplayName())
 				.setMale(mPlusClient.getCurrentPerson().getGender() == 0 ? true : false);
 		Toast.makeText(getActivity(), mPlusClient.getCurrentPerson().getDisplayName() + " вход выполнен",
 				Toast.LENGTH_SHORT).show();
+		// get image via https://plus.google.com/s2/photos/profile/{user_id}
 		NewAccountHolderScreen newAccountHolderScreen = (NewAccountHolderScreen) getActivity();
 		newAccountHolderScreen.showFragment(1, false);
 	}
 
 	@Override
 	public void onDisconnected() {
-		Toast.makeText(getActivity(), mPlusClient.getCurrentPerson().getDisplayName() + " - вышел",
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity(), mPlusClient.getCurrentPerson().getDisplayName() + " - вышел", Toast.LENGTH_SHORT)
+				.show();
 	}
 
 }

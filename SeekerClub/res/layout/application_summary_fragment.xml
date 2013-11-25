@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/fancy_border"
+    android:background="@color/selected_text"
     android:gravity="center"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:layout_margin="@dimen/d5p"
+        android:background="@drawable/fancy_border"
         android:gravity="center"
-        android:minHeight="400dp"
-        android:minWidth="275dp"
         android:orientation="vertical" >
 
         <TextView
@@ -155,7 +154,7 @@
             android:id="@+id/postApplication_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/d15p"
             android:layout_weight="1"
             android:text="@string/postApplication"
             android:textStyle="bold" />

@@ -5,6 +5,7 @@ public class SeekerUser {
 	private int id;
 	private boolean isLoggedIn;
 	
+	private String googleId;
 	private String name;
 	
 	private String email;
@@ -94,6 +95,15 @@ public class SeekerUser {
 
 	public void setLoggedIn(boolean isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
+	}
+
+	public String getGoogleId() {
+		return googleId;
+	}
+
+	public SeekerUser setGoogleId(String googleId) {
+		this.googleId = googleId;
+		return instance;
 	}
 
 }

@@ -62,6 +62,8 @@ public class FirstStepFragment extends SherlockFragment {
 	}
 
 	private void initFragment() {
+		getSherlockActivity().getSupportActionBar().setHomeButtonEnabled(false);
+		getSherlockActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
 		myTreatCheckBox = (CheckBox) view.findViewById(R.id.myTreat_checkBox);
 

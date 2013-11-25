@@ -1,53 +1,55 @@
-package com.primerworldapps.seeker;
+package com.primerworldapps.seeker.fragments;
 
+import android.app.Service;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.MenuItem;
+import com.primerworldapps.seeker.R;
+import com.primerworldapps.seeker.SeekerHolderScreen;
 import com.primerworldapps.seeker.entity.SeekerApplication;
-import com.primerworldapps.seeker.services.ScannerService;
 
-public class ApplicationSummaryScreen extends SherlockActivity implements LocationListener {
+public class ApplicationSummaryFragment extends SherlockFragment implements LocationListener {
 
-	private static final long LOCATION_REFRESH_TIME = 60000;
-	private static final float LOCATION_REFRESH_DISTANCE = 50;
+	private static final long LOCATION_REFRESH_TIME = 0;
+	private static final float LOCATION_REFRESH_DISTANCE = 0;
 
 	private LocationManager mLocationManager;
 
 	private ProgressBar mProgressBar;
 	private TextView summaryStatusText;
 
+	private View view;
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.application_summary_screen);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.application_summary_fragment, container, false);
 
-		getSupportActionBar().setTitle(R.string.application_summary_check);
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		initFragment();
 
-		initScreen();
-
+		return view;
 	}
 
-	private void initScreen() {
+	private void initFragment() {
 		SeekerApplication seekerApplication = SeekerApplication.getInstance();
 
-		TextView themeText = (TextView) findViewById(R.id.summaryThemeText);
-		TextView treatText = (TextView) findViewById(R.id.summaryTreatText);
-		TextView genderText = (TextView) findViewById(R.id.summaryGenderText);
-		TextView ageText = (TextView) findViewById(R.id.summaryAgeText);
-		TextView callbackText = (TextView) findViewById(R.id.summaryCallbackText);
+		TextView themeText = (TextView) view.findViewById(R.id.summaryThemeText);
+		TextView treatText = (TextView) view.findViewById(R.id.summaryTreatText);
+		TextView genderText = (TextView) view.findViewById(R.id.summaryGenderText);
+		TextView ageText = (TextView) view.findViewById(R.id.summaryAgeText);
+		TextView callbackText = (TextView) view.findViewById(R.id.summaryCallbackText);
 
 		switch (seekerApplication.getType()) {
 		case 1: {
@@ -114,13 +116,13 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 
 		callbackText.setText(seekerApplication.getContact());
 
-		mProgressBar = (ProgressBar) findViewById(R.id.summary_progressBar);
+		mProgressBar = (ProgressBar) view.findViewById(R.id.summary_progressBar);
 		mProgressBar.setVisibility(View.GONE);
 
-		summaryStatusText = (TextView) findViewById(R.id.summary_statusText);
+		summaryStatusText = (TextView) view.findViewById(R.id.summary_statusText);
 		summaryStatusText.setVisibility(View.GONE);
 
-		final Button postApplicationButton = (Button) findViewById(R.id.postApplication_Button);
+		final Button postApplicationButton = (Button) view.findViewById(R.id.postApplication_Button);
 		postApplicationButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -136,15 +138,23 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 	}
 
 	protected void locationSearchTask() {
-		mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-		checkLocationProviders(mLocationManager);
+		mLocationManager = (LocationManager) getActivity().getSystemService(Service.LOCATION_SERVICE);
+		Location location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+		if (location == null) {
+			location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		}
+		if (location == null) {
+			checkLocationProviders(mLocationManager);
+		} else {
+			showNextActivity(location);
+		}
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		default: {
-			finish();
+			getActivity().finish();
 		}
 		}
 		return true;
@@ -152,22 +162,18 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 
 	@Override
 	public void onLocationChanged(Location location) {
-		SeekerApplication.getInstance().setLatitude(location.getLatitude()).setLongitude(location.getLongitude());
-		summaryStatusText.setText(getString(R.string.posting_to_server));
-		mProgressBar.setVisibility(View.GONE);
-		summaryStatusText.setVisibility(View.GONE);
-		
-		Toast.makeText(this, location.getLatitude() + ":" + location.getLongitude(), Toast.LENGTH_SHORT).show();
-		//startActivity(new Intent(this, SeekerHolderScreen.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-		startActivityForResult(new Intent(this, SeekerHolderScreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), 0);
+		showNextActivity(location);
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
+		Toast.makeText(getActivity(), "Provider disbled", Toast.LENGTH_SHORT)
+		.show();
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
+		Toast.makeText(getActivity(), "Provider enabled", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -178,9 +184,11 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 	private void checkLocationProviders(LocationManager mLocationManager) {
 		summaryStatusText.setText(getString(R.string.location_check));
 		if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-			mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME, LOCATION_REFRESH_DISTANCE, this);
+			mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME,
+					LOCATION_REFRESH_DISTANCE, this);
 		} else if (mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-			mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_REFRESH_TIME, LOCATION_REFRESH_DISTANCE, this);
+			mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_REFRESH_TIME,
+					LOCATION_REFRESH_DISTANCE, this);
 		} else {
 			mProgressBar.setVisibility(View.GONE);
 			summaryStatusText.setVisibility(View.GONE);
@@ -188,14 +196,26 @@ public class ApplicationSummaryScreen extends SherlockActivity implements Locati
 			startActivity(wirelessSettingsIntent);
 		}
 	}
-	
+
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (resultCode) {
-		case 0:
-			setResult(0);
-			finish();
-		}
-		super.onActivityResult(requestCode, resultCode, data);
+	public void onResume() {
+		super.onResume();
+
+		initFragment();
+	}
+
+	private void showNextActivity(Location location) {
+		mLocationManager.removeUpdates(this);
+		
+		SeekerApplication.getInstance().setLatitude(location.getLatitude()).setLongitude(location.getLongitude());
+		
+		summaryStatusText.setText(getString(R.string.posting_to_server));
+		mProgressBar.setVisibility(View.GONE);
+		summaryStatusText.setVisibility(View.GONE);
+
+		Toast.makeText(getActivity(), location.getLatitude() + ":" + location.getLongitude(), Toast.LENGTH_SHORT)
+				.show();
+		startActivityForResult(
+				new Intent(getActivity(), SeekerHolderScreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), 0);
 	}
 }

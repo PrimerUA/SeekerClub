@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/selected_text"
     android:gravity="center"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/scanner"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/d5p"
+        android:background="@drawable/fancy_border"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -17,6 +18,7 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d5p"
             android:gravity="center"
             android:text="@string/scanner_searching"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -24,39 +26,40 @@
             android:typeface="serif" />
 
         <ProgressBar
-            android:id="@+id/progressBar1"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:id="@+id/noti_scannerProgress"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/d15p"
             android:layout_weight="1"
-            android:indeterminate="true"
-            android:minHeight="150dip"
-            android:minWidth="150dip" />
+            android:indeterminateDrawable="@anim/fancy_progress" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d5p"
+            android:layout_marginRight="@dimen/d5p"
+            android:layout_marginTop="@dimen/d5p"
             android:gravity="center"
             android:text="@string/scanner_time"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/scanner_timerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d5p"
             android:text="[ 59:59 ]"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/selected_text"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/scanner_abortButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scanner_abort" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/scanner_abortButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/scanner_abort" />
 
 </LinearLayout>

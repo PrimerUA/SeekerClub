@@ -1,6 +1,5 @@
 package com.primerworldapps.seeker.fragments;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,9 +15,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.primerworldapps.seeker.ApplicationSummaryScreen;
+import com.primerworldapps.seeker.MeetingStepsHolderScreen;
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.entity.SeekerApplication;
+import com.primerworldapps.seeker.entity.SeekerUser;
 
 public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 
@@ -54,8 +54,8 @@ public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 			@Override
 			public void onClick(View v) {
 				SeekerApplication.getInstance().setContact(contact);
-				Intent seekerHolderIntent = new Intent(getActivity(), ApplicationSummaryScreen.class);
-				startActivity(seekerHolderIntent);
+				MeetingStepsHolderScreen meetingStepsHolderScreen = (MeetingStepsHolderScreen) getActivity();
+				meetingStepsHolderScreen.showFragment(3, true);
 			}
 		});
 		previewButton.setEnabled(false);
@@ -67,7 +67,7 @@ public class ThirdStepFragment extends SherlockFragment implements TextWatcher {
 		emailEdit = (EditText) view.findViewById(R.id.edit_email);
 		phoneEdit = (EditText) view.findViewById(R.id.edit_phone);
 		socialEdit = (EditText) view.findViewById(R.id.edit_social);
-
+		
 		typeface = socialRadioButton.getTypeface();
 
 		emailEdit.setEnabled(false);
