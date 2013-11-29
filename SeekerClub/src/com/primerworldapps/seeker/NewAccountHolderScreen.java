@@ -8,14 +8,12 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.primerworldapps.seeker.entity.SeekerApplication;
 import com.primerworldapps.seeker.fragments.CreateAccountFragment;
-import com.primerworldapps.seeker.fragments.FractionSelectionFragment;
 import com.primerworldapps.seeker.fragments.UserLoginFragment;
 
 public class NewAccountHolderScreen extends SherlockFragmentActivity {
 
-	private final int STEPS = 3;
+	private final int STEPS = 2;
 	private Fragment[] fragments = new Fragment[STEPS];
 
 	private int currentFragment;
@@ -32,7 +30,7 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 		UserLoginFragment startFragment = (UserLoginFragment) fm.findFragmentById(R.id.loginFragment);
 		fragments[0] = startFragment;
 		fragments[1] = (CreateAccountFragment) fm.findFragmentById(R.id.creationFragment);
-		fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
+		//fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
 
 		FragmentTransaction transaction = fm.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {

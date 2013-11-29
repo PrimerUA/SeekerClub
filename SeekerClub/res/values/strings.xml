@@ -100,8 +100,31 @@
     <string name="cancel_text">Будет продолжен поиск новых заявок</string>
     <string name="agree_title">Подтвердить согласие на встречу?</string>
     <string name="agree_text">Вы обменяетесь контактными данными с этим пользователем если он также согласиться на встречу</string>
-
     <string name="noti_detected_ticker">Seeker обнаружил кандидата!</string>
     <string name="noti_detected_title">Найден кандидат для встречи</string>
     <string name="noti_detected_text">Подтвердите Ваше согласие</string>
+    <string name="cdialog_title">Ожидайте согласия от</string>
+    <string name="cnoti_confirmation_ticker">Ожидайте согласия пользователя!</string>
+    <string name="cnoti_confirmation_title">Подтверждение согласия на встречу</string>
+    <string name="cnoti_confirmation_text">Ожидайте подтверждения пользователя на встречу</string>
+    <string name="cnoti_confirmed_ticker">Кандидат подтвердил встречу!</string>
+    <string name="cnoti_confirmed_title">Пользователь согласился на встречу</string>
+    <string name="cnoti_confirmed_text">Свяжитесь с ним и назначьте время встречи</string>
+    <string name="buy_coins">Пополнить счет</string>
+    <string name="new_meeting_menu_text">Новая встреча</string>
+    <string name="my_meetings_menu_text">Мои встречи</string>
+    <string name="discounts_menu_text">Клубные скидки</string>
+    <string name="manifest_menu_text">Манифест</string>
+    <string name="menu_contacts_number_text">Получено контактов:</string>
+    <string name="menu_meeteings_number_text">Проведено встреч:</string>
+    <string name="menu_my_rating_text">Мой рейтинг:</string>
+    <string name="menu_coins_number_text">Монет на счету:</string>
+    <string name="club_1">Seeker Club: Меню</string>
+    <string name="club_2">Мои встречи</string>
+    <string name="club_3">Манифест Seeker-а</string>
+    <string name="club_4">Дисконт программ</string>
+    <string name="menu_logout">Деавторизация</string>
+    <string name="google_connected">Google+ вход выполнен</string>
+    <string name="google_disconnected">Google+ отключен</string>
+
 </resources>

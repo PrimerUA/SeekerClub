@@ -16,10 +16,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     
-    <fragment
-        android:id="@+id/fractionFragment"
-        android:name="com.primerworldapps.seeker.fragments.FractionSelectionFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </LinearLayout>

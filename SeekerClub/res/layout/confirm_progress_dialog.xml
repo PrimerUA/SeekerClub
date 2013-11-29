@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fancy_border"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <ProgressBar
+        android:id="@+id/noti_scannerProgress"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_margin="@dimen/d5p"
+        android:indeterminateDrawable="@anim/fancy_progress" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cdialog_title"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/confirmProgress_nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Жанны Фриске"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/confirmProgress_timeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d15p"
+            android:text="[ 1:59 ]"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/selected_text"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

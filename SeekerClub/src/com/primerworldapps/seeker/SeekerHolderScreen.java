@@ -19,12 +19,12 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 	private final int STEPS = 2; // change
 	private Fragment[] fragments = new Fragment[STEPS];
 
-	private Intent service;
+	private Intent scannerService;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		service = new Intent(this, ScannerService.class);
+		scannerService = new Intent(this, ScannerService.class);
 		setContentView(R.layout.seeker_holder_screen);
 
 		initScreen();
@@ -32,7 +32,7 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 	}
 
 	public void initScreen() {
-		
+
 		FragmentManager fm = getSupportFragmentManager();
 		ScanSeekerFragment startFragment = (ScanSeekerFragment) fm.findFragmentById(R.id.scanFragment);
 		fragments[0] = startFragment;
@@ -57,11 +57,11 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 	}
 
 	public void startScannerService() {
-		startService(service);
+		startService(scannerService);
 	}
-	
+
 	public void stopScannerService() {
-		stopService(service);
+		stopService(scannerService);
 	}
 
 	public Fragment showFragment(int fragmentIndex, boolean addToBackStack) {
@@ -99,13 +99,14 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 	@Override
 	public boolean onKeyDown(int keycode, KeyEvent e) {
 		switch (keycode) {
-		case KeyEvent.KEYCODE_MENU:
+		case KeyEvent.KEYCODE_MENU: { // найдена подходящая заявка на сервере
 			SeekerDetectedApplication.getInstance().setId(1).setName("Жанна Фриске").setType(3).setMyTreat(false)
 					.setContact("+380631234567");
 			((ScanSeekerFragment) fragments[0]).stopTimer();
 			((ApplicationDetectedFragment) fragments[1]).initFragment();
 			stopScannerService();
 			showFragment(1, false);
+		}
 			return true;
 		}
 

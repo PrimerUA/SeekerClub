@@ -30,13 +30,6 @@
                 android:baselineAlignBottom="false"
                 android:cropToPadding="false"
                 android:src="@drawable/ic_launcher" />
-
-            <Button
-                android:id="@+id/application_openPhotoButton"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/show_photo" />
         </LinearLayout>
 
         <LinearLayout

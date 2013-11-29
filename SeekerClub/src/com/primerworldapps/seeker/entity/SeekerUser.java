@@ -12,7 +12,10 @@ public class SeekerUser {
 	private int age;
 	private boolean gender;
 
+	private int contacts = 0;
+	private int meetings = 0;
 	private double rating = 0;
+	private double coins = 0;
 	private int fractionId = 0; //fractions numbers = 0,1,2
 	private static SeekerUser instance = null;
 
@@ -93,8 +96,9 @@ public class SeekerUser {
 		return isLoggedIn;
 	}
 
-	public void setLoggedIn(boolean isLoggedIn) {
+	public SeekerUser setLoggedIn(boolean isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
+		return instance;
 	}
 
 	public String getGoogleId() {
@@ -104,6 +108,39 @@ public class SeekerUser {
 	public SeekerUser setGoogleId(String googleId) {
 		this.googleId = googleId;
 		return instance;
+	}
+
+	public double getCoins() {
+		return coins;
+	}
+
+	public SeekerUser setCoins(double coins) {
+		this.coins = coins;
+		return instance;
+	}
+
+	public int getContacts() {
+		return contacts;
+	}
+
+	public SeekerUser setContacts(int contacts) {
+		this.contacts = contacts;
+		return instance;
+	}
+
+	public int getMeetings() {
+		return meetings;
+	}
+
+	public SeekerUser setMeetings(int meetings) {
+		this.meetings = meetings;
+		return instance;
+	}
+	
+	public void clear() {
+		isLoggedIn = false;
+		name = null;
+		email = null;
 	}
 
 }
