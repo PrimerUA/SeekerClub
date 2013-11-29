@@ -32,7 +32,7 @@
                 android:src="@drawable/ic_launcher" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/application_openPhotoButton"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +70,6 @@
             android:gravity="center" >
 
             <TextView
-                android:id="@+id/application_themeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wants"
@@ -79,7 +78,7 @@
                 android:typeface="serif" />
 
             <TextView
-                android:id="@+id/application_treatText"
+                android:id="@+id/application_themeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -103,7 +102,7 @@
                 android:typeface="serif" />
 
             <TextView
-                android:id="@+id/summaryGenderText"
+                android:id="@+id/application_treatText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -116,7 +115,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/d5p"
+            android:layout_marginTop="@dimen/d15p"
             android:text="@string/confirm_meeting"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:typeface="serif" />
@@ -125,7 +124,7 @@
             android:id="@+id/application_timerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/d5p"
+            android:layout_margin="@dimen/d15p"
             android:text="[ 1:59 ]"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/selected_text"

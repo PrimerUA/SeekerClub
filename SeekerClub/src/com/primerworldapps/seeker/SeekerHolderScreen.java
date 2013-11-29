@@ -6,35 +6,39 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
+import com.primerworldapps.seeker.entity.SeekerDetectedApplication;
 import com.primerworldapps.seeker.fragments.ApplicationDetectedFragment;
 import com.primerworldapps.seeker.fragments.ScanSeekerFragment;
+import com.primerworldapps.seeker.services.ScannerService;
 
 public class SeekerHolderScreen extends SherlockFragmentActivity {
 
-	private final int STEPS = 2; //change
+	private final int STEPS = 2; // change
 	private Fragment[] fragments = new Fragment[STEPS];
+
+	private Intent service;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		service = new Intent(this, ScannerService.class);
 		setContentView(R.layout.seeker_holder_screen);
-
-//		getSupportActionBar().setHomeButtonEnabled(true);
-//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		initScreen();
 		showFragment(0, true);
 	}
 
 	public void initScreen() {
+		
 		FragmentManager fm = getSupportFragmentManager();
 		ScanSeekerFragment startFragment = (ScanSeekerFragment) fm.findFragmentById(R.id.scanFragment);
 		fragments[0] = startFragment;
 		fragments[1] = (ApplicationDetectedFragment) fm.findFragmentById(R.id.detectedFragment);
-		//fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
+		// fragments[2] = (FractionSelectionFragment)
+		// fm.findFragmentById(R.id.fractionFragment);
 
 		FragmentTransaction transaction = fm.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {
@@ -52,7 +56,15 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 		});
 	}
 
-	public void showFragment(int fragmentIndex, boolean addToBackStack) {
+	public void startScannerService() {
+		startService(service);
+	}
+	
+	public void stopScannerService() {
+		stopService(service);
+	}
+
+	public Fragment showFragment(int fragmentIndex, boolean addToBackStack) {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {
@@ -66,21 +78,38 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 			transaction.addToBackStack(null);
 		}
 		if (fragmentIndex == 0) {
-			getSupportActionBar().setTitle(getString(R.string.scan_1));
+			getSherlock().setTitle(getString(R.string.scan_1));
 		} else if (fragmentIndex == 1) {
-			getSupportActionBar().setTitle(getString(R.string.scan_2));
+			getSherlock().setTitle(getString(R.string.scan_2));
 		} else {
-			getSupportActionBar().setTitle(getString(R.string.scan_3));
+			getSherlock().setTitle(getString(R.string.scan_3));
 		}
 		transaction.commit();
+		return fragments[fragmentIndex];
 	}
 
 	@Override
 	public void onBackPressed() {
 		Intent backtoHome = new Intent(Intent.ACTION_MAIN);
-        backtoHome.addCategory(Intent.CATEGORY_HOME);
-        backtoHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(backtoHome);
+		backtoHome.addCategory(Intent.CATEGORY_HOME);
+		backtoHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(backtoHome);
 	}
-	
+
+	@Override
+	public boolean onKeyDown(int keycode, KeyEvent e) {
+		switch (keycode) {
+		case KeyEvent.KEYCODE_MENU:
+			SeekerDetectedApplication.getInstance().setId(1).setName("Жанна Фриске").setType(3).setMyTreat(false)
+					.setContact("+380631234567");
+			((ScanSeekerFragment) fragments[0]).stopTimer();
+			((ApplicationDetectedFragment) fragments[1]).initFragment();
+			stopScannerService();
+			showFragment(1, false);
+			return true;
+		}
+
+		return super.onKeyDown(keycode, e);
+	}
+
 }

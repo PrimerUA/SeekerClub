@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,19 +14,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.primerworldapps.seeker.R;
+import com.primerworldapps.seeker.SeekerHolderScreen;
 import com.primerworldapps.seeker.entity.SeekerApplication;
+import com.primerworldapps.seeker.entity.SeekerDetectedApplication;
 import com.primerworldapps.seeker.services.ScannerService;
-import com.primerworldapps.seeker.util.Constants;
 
 public class ScanSeekerFragment extends SherlockFragment {
 
 	private View view;
-	private Intent service;
-
 	private TextView timerText;
 
 	private CountDownTimer countDownTimer;
+	private SeekerHolderScreen seekerHolderScreen;
 
 	private long ONE_HOUR = 3600000;
 
@@ -33,6 +35,8 @@ public class ScanSeekerFragment extends SherlockFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.scan_seeker_fragment, container, false);
 		initFragment();
+		
+		seekerHolderScreen = (SeekerHolderScreen) getActivity();
 
 		Button abortButton = (Button) view.findViewById(R.id.scanner_abortButton);
 		abortButton.setOnClickListener(new OnClickListener() {
@@ -62,15 +66,13 @@ public class ScanSeekerFragment extends SherlockFragment {
 			}
 		});
 
-		service = new Intent(getActivity(), ScannerService.class);
-		getActivity().startService(service);
-
+		seekerHolderScreen.startScannerService();
+		
 		return view;
 	}
 
 	private void initFragment() {
 		timerText = (TextView) view.findViewById(R.id.scanner_timerText);
-
 		startTimer(ONE_HOUR);
 	}
 
@@ -78,18 +80,12 @@ public class ScanSeekerFragment extends SherlockFragment {
 		countDownTimer = new CountDownTimer(startTime, 1000) {
 			public void onTick(long millisUntilFinished) {
 				long minutes = millisUntilFinished / (60 * 1000);
-				///test: application detected!
-				//if (minutes <= 59) {
-				///	getActivity().sendBroadcast(new Intent(Constants.BROADCAST_ACTION));
-				//}
-				///-///
 				long seconds = millisUntilFinished % (60 * 1000);
 				timerText.setText("[ " + String.valueOf(minutes) + ":" + String.valueOf(seconds / 1000) + " ]");
 				SeekerApplication.getInstance().setTime(millisUntilFinished);
 			}
 
 			public void onFinish() {
-				timerText.setText("00:00");
 				stopServiceAndFinish();
 			}
 		};
@@ -102,11 +98,13 @@ public class ScanSeekerFragment extends SherlockFragment {
 
 	public void relaunchFragment() {
 		startTimer(SeekerApplication.getInstance().getTime());
-		getActivity().startService(service);
+		seekerHolderScreen.startScannerService();
 	}
 
 	private void stopServiceAndFinish() {
-		getActivity().stopService(service);
+		SeekerDetectedApplication.getInstance().setId(0);
+		seekerHolderScreen.stopScannerService();
 		getActivity().finish();
 	}
+	
 }

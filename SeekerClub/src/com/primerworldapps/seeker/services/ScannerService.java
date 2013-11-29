@@ -13,17 +13,18 @@ import android.widget.RemoteViews;
 
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.SeekerHolderScreen;
-import com.primerworldapps.seeker.receivers.ApplicationReceiver;
+import com.primerworldapps.seeker.entity.SeekerDetectedApplication;
 import com.primerworldapps.seeker.util.Constants;
 
 public class ScannerService extends Service {
 
-	private ApplicationReceiver applicationReceiver = new ApplicationReceiver();
 	private NotificationManager notificationManager;
+	
+	private int NOTI_SCAN_CODE = 1;
+	private int NOTI_DETECT_CODE = 2;
 
 	@Override
 	public IBinder onBind(Intent arg0) {
-		registerReceiver(applicationReceiver, new IntentFilter());
 		return null;
 	}
 
@@ -31,27 +32,24 @@ public class ScannerService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TO-DO: отправка заявки на сервер
 		// запуск процедуры сканирования на сервере
-		
-		registerReceiver(applicationReceiver, new IntentFilter(Constants.BROADCAST_ACTION));
+		// каждую минуту посылать запрос на сервер и проверять есть ли там новые
+		// заявки по указанным критериям
 
-		showNotification(intent);
+		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		showScannerNotification();
 
-		// при получение заявки отправка sendBroadcast к ресиверу
-		
 		return Service.START_STICKY;
 	}
 
-	private void showNotification(Intent intent) {
-		int NOTI_CODE = 1;
-		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+	private void showScannerNotification() {
+		notificationManager.cancelAll();
 		Builder notificationBuilder = new NotificationCompat.Builder(this);
 
 		Intent notificationIntent = new Intent(this, SeekerHolderScreen.class);
 		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-		PendingIntent contentIntent = PendingIntent.getActivity(this, NOTI_CODE, notificationIntent,
+		PendingIntent contentIntent = PendingIntent.getActivity(this, NOTI_SCAN_CODE, notificationIntent,
 				PendingIntent.FLAG_CANCEL_CURRENT);
-		notificationBuilder.setAutoCancel(false)
-				.setTicker(getString(R.string.noti_scanner_ticker))
+		notificationBuilder.setAutoCancel(false).setTicker(getString(R.string.noti_scanner_ticker))
 				.setContentIntent(contentIntent).setSmallIcon(R.drawable.ic_launcher)
 				.setWhen(System.currentTimeMillis());
 
@@ -65,20 +63,40 @@ public class ScannerService extends Service {
 		notification.contentView = contentView;
 		notification.flags = Notification.FLAG_ONGOING_EVENT;
 		notification.flags = Notification.FLAG_NO_CLEAR;
-		notificationManager.notify(NOTI_CODE, notification);
+		notificationManager.notify(NOTI_SCAN_CODE, notification);
 	}
 
 	@Override
 	public void onDestroy() {
-		unregisterReceiver(applicationReceiver);
 		super.onDestroy();
-		notificationManager.cancelAll();
+		if (SeekerDetectedApplication.getInstance().getId() == 0) {
+			notificationManager.cancelAll();
+		} else {
+			showDetectedNotification();
+		}
 	}
 
 	@Override
 	public boolean onUnbind(Intent intent) {
-		unregisterReceiver(applicationReceiver);
 		return super.onUnbind(intent);
 	}
 
+	public void showDetectedNotification() {
+		notificationManager.cancelAll();
+		Builder notificationBuilder = new NotificationCompat.Builder(this);
+
+		Intent notificationIntent = new Intent(this, SeekerHolderScreen.class);
+		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		PendingIntent contentIntent = PendingIntent.getActivity(this, NOTI_DETECT_CODE, notificationIntent,
+				PendingIntent.FLAG_CANCEL_CURRENT);
+		notificationBuilder.setContentTitle(getString(R.string.noti_detected_title))
+				.setContentText(getString(R.string.noti_detected_text)).setAutoCancel(false)
+				.setTicker(getString(R.string.noti_detected_ticker)).setContentIntent(contentIntent)
+				.setSmallIcon(R.drawable.ic_launcher).setWhen(System.currentTimeMillis());
+
+		Notification notification = notificationBuilder.build();
+		notification.flags = Notification.FLAG_ONGOING_EVENT;
+		notification.flags = Notification.FLAG_NO_CLEAR;
+		notificationManager.notify(NOTI_DETECT_CODE, notification);
+	}
 }

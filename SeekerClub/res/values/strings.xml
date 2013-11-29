@@ -96,10 +96,12 @@
     <string name="confirm_meeting">Хочешь встретиться со мной?</string>
     <string name="yes">Да!</string>
     <string name="no">Нет</string>
-    
-<string name="cancel_title">Отказать данному кандидату?</string>
+    <string name="cancel_title">Отказать данному кандидату?</string>
     <string name="cancel_text">Будет продолжен поиск новых заявок</string>
-    
     <string name="agree_title">Подтвердить согласие на встречу?</string>
     <string name="agree_text">Вы обменяетесь контактными данными с этим пользователем если он также согласиться на встречу</string>
+
+    <string name="noti_detected_ticker">Seeker обнаружил кандидата!</string>
+    <string name="noti_detected_title">Найден кандидат для встречи</string>
+    <string name="noti_detected_text">Подтвердите Ваше согласие</string>
 </resources>

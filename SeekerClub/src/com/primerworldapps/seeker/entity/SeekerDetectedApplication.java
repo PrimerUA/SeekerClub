@@ -4,7 +4,7 @@ public class SeekerDetectedApplication {
 
 	private static SeekerDetectedApplication instance = null;
 
-	private int id;
+	private int id = 0;
 	private int user_id;
 	
 	private String name;
