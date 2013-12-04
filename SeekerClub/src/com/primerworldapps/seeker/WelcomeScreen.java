@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.primerworldapps.seeker.entity.SeekerUser;
+import com.primerworldapps.seeker.util.PlusClientAuthenticator;
 
 public class WelcomeScreen extends SherlockActivity {
 
@@ -36,7 +38,7 @@ public class WelcomeScreen extends SherlockActivity {
 
 			@Override
 			public void onClick(View v) {
-				startActivityForResult(new Intent(WelcomeScreen.this, MainClubHolderScreen.class), 0);
+				finish();
 			}
 		});
 
@@ -45,18 +47,12 @@ public class WelcomeScreen extends SherlockActivity {
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (resultCode) {
-		case 0:
-			setResult(0);
-			finish();
-		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
-	@Override
 	public void onResume() {
 		super.onResume();
+		if (!SeekerUser.getInstance().isLoggedIn() && PlusClientAuthenticator.getInstance().getPlusClient() != null) {
+			Toast.makeText(this, getString(R.string.google_auth_error), Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(this, NewAccountHolderScreen.class));
+		}
 		userNameText.setText(SeekerUser.getInstance().getName());
 	}
 

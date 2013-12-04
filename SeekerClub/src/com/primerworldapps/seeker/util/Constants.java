@@ -10,6 +10,7 @@ public class Constants {
 	public static final String USER_GENDER = "user-gender";
 	public static final String USER_AGE = "user-age";
 	public static final String USER_STATE = "user-state";
+	public static final String USER_CONFIRMED= "user-confirmed";
 	
 	public final static String BROADCAST_ACTION = "seeker_application_broadcast";
 

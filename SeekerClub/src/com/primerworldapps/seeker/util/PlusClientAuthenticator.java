@@ -65,12 +65,10 @@ public class PlusClientAuthenticator implements GooglePlayServicesClient.Connect
 					.setName(plusClient.getCurrentPerson().getDisplayName())
 					.setMale(plusClient.getCurrentPerson().getGender() == 0 ? true : false);
 			PreferencesController.getInstance().savePreferences();
-
+			
+			//отправка данных о пользователе на сервер
 			// new UserExecutor().checkUser(seekerUser.getName(),
 			// seekerUser.getEmail());
-			
-			NewAccountHolderScreen newAccountHolderScreen = (NewAccountHolderScreen) context;
-			newAccountHolderScreen.showFragment(1, false);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package com.primerworldapps.seeker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,21 +24,22 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_account_holder_screen);
 
-//		getSupportActionBar().setHomeButtonEnabled(true);
-//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		// getSupportActionBar().setHomeButtonEnabled(true);
+		// getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		FragmentManager fm = getSupportFragmentManager();
 		UserLoginFragment startFragment = (UserLoginFragment) fm.findFragmentById(R.id.loginFragment);
 		fragments[0] = startFragment;
 		fragments[1] = (CreateAccountFragment) fm.findFragmentById(R.id.creationFragment);
-		//fragments[2] = (FractionSelectionFragment) fm.findFragmentById(R.id.fractionFragment);
+		// fragments[2] = (FractionSelectionFragment)
+		// fm.findFragmentById(R.id.fractionFragment);
 
 		FragmentTransaction transaction = fm.beginTransaction();
 		for (int i = 0; i < fragments.length; i++) {
 			transaction.hide(fragments[i]);
 		}
 		transaction.commit();
-		showFragment(currentFragment = 0, true);
+		showFragment(currentFragment = 0, false);
 
 		fm.addOnBackStackChangedListener(new OnBackStackChangedListener() {
 
@@ -77,24 +79,17 @@ public class NewAccountHolderScreen extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		default: {
-			//backButton();
+			// backButton();
 		}
 		}
 		return true;
 	}
 
-	private void backButton() {
-		if (currentFragment != 0) {
-			currentFragment--;
-			showFragment(currentFragment, false);
-		} else {
-			finish();
-		}		
-	}
-
-	@Override
 	public void onBackPressed() {
-		//backButton();
+		Intent backtoHome = new Intent(Intent.ACTION_MAIN);
+		backtoHome.addCategory(Intent.CATEGORY_HOME);
+		backtoHome.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(backtoHome);
 	}
 
 }

@@ -5,19 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.google.android.gms.common.SignInButton;
+import com.primerworldapps.seeker.NewAccountHolderScreen;
 import com.primerworldapps.seeker.R;
+import com.primerworldapps.seeker.entity.SeekerUser;
 import com.primerworldapps.seeker.util.PlusClientAuthenticator;
 
-/**
- * Activity which displays a login screen to the user, offering registration as
- * well.
- */
 public class UserLoginFragment extends SherlockFragment {
 
 	private SignInButton loginButton;
+	private Spinner ageSpinner;
 
 	private View view;
 
@@ -32,12 +32,19 @@ public class UserLoginFragment extends SherlockFragment {
 	}
 
 	private void initFragment() {
+		
+		ageSpinner = (Spinner) view.findViewById(R.id.createAccount_ageSpinner);
+		ageSpinner.setSelection(1);
+		
 		loginButton = (SignInButton) view.findViewById(R.id.login_button);
 		loginButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				SeekerUser.getInstance().setAge(ageSpinner.getSelectedItemPosition());
 				PlusClientAuthenticator.getInstance().init(getActivity()).connect();
+				NewAccountHolderScreen newAccountHolderScreen = (NewAccountHolderScreen) getActivity();
+				newAccountHolderScreen.showFragment(1, false);
 			}
 		});
 	}

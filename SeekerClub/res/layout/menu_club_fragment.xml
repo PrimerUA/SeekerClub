@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/d5p"
         android:layout_marginRight="@dimen/d5p"
-        android:layout_weight="1"
         android:background="@drawable/fancy_border"
         android:orientation="vertical" >
 

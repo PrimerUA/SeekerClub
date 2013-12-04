@@ -11,11 +11,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:background="@color/background_transparent"
         android:src="@drawable/appname" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <TextView
+            android:id="@+id/summaryThemeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_age"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/selected_text"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <Spinner
+            android:id="@+id/createAccount_ageSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/age"
+            android:prompt="@string/hint_age" />
+    </LinearLayout>
 
    <com.google.android.gms.common.SignInButton
        android:id="@+id/login_button"
-       android:layout_width="150dp"
+       android:layout_width="200dp"
        android:layout_height="wrap_content"
        android:layout_marginBottom="@dimen/abs__action_button_min_width"
        android:layout_marginTop="@dimen/abs__dropdownitem_icon_width" />

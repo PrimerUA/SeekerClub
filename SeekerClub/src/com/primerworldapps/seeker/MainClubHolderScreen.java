@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -33,7 +34,7 @@ public class MainClubHolderScreen extends SherlockFragmentActivity {
 		PreferencesController.getInstance().init(this);
 		if (!SeekerUser.getInstance().isLoggedIn()) {
 			startActivity(new Intent(this, WelcomeScreen.class));
-		} else {
+		} else if (PlusClientAuthenticator.getInstance().getPlusClient() == null) {
 			PlusClientAuthenticator.getInstance().init(this).connect();
 		}
 
@@ -99,13 +100,15 @@ public class MainClubHolderScreen extends SherlockFragmentActivity {
 			if (mPlusClient.isConnected()) {
 				mPlusClient.clearDefaultAccount();
 
-			    mPlusClient.revokeAccessAndDisconnect(new OnAccessRevokedListener() {
-			       @Override
-			       public void onAccessRevoked(ConnectionResult status) {
-			    	   
-			       }
-			    });
+				mPlusClient.revokeAccessAndDisconnect(new OnAccessRevokedListener() {
+					@Override
+					public void onAccessRevoked(ConnectionResult status) {
+
+					}
+				});
 				mPlusClient.disconnect();
+				SeekerUser.getInstance().clear();
+				PreferencesController.getInstance().savePreferences();
 				startActivity(new Intent(this, WelcomeScreen.class));
 			}
 			break;
@@ -135,16 +138,6 @@ public class MainClubHolderScreen extends SherlockFragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (resultCode) {
-		case 0:
-			setResult(0);
-			finish();
-		}
-		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 }

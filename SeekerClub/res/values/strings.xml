@@ -126,5 +126,8 @@
     <string name="menu_logout">Деавторизация</string>
     <string name="google_connected">Google+ вход выполнен</string>
     <string name="google_disconnected">Google+ отключен</string>
+    <string name="google_auth_error">Для входа подтвердите обе формы Google+</string>
+    <string name="progress_wait">Пожалуйста, подождите</string>
+    <string name="progress_loading">Осуществляется загрузка данных</string>
 
 </resources>

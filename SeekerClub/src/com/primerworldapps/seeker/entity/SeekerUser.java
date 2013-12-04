@@ -3,11 +3,11 @@ package com.primerworldapps.seeker.entity;
 public class SeekerUser {
 
 	private int id;
-	private boolean isLoggedIn;
-	
+	private boolean isLoggedIn = false;
+
 	private String googleId;
 	private String name;
-	
+
 	private String email;
 	private int age;
 	private boolean gender;
@@ -16,7 +16,7 @@ public class SeekerUser {
 	private int meetings = 0;
 	private double rating = 0;
 	private double coins = 0;
-	private int fractionId = 0; //fractions numbers = 0,1,2
+	private int fractionId = 0; // fractions numbers = 0,1,2
 	private static SeekerUser instance = null;
 
 	protected SeekerUser() {
@@ -78,7 +78,7 @@ public class SeekerUser {
 		this.id = id;
 		return instance;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -136,7 +136,7 @@ public class SeekerUser {
 		this.meetings = meetings;
 		return instance;
 	}
-	
+
 	public void clear() {
 		isLoggedIn = false;
 		name = null;
