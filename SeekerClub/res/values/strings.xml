@@ -103,7 +103,8 @@
     <string name="noti_detected_ticker">Seeker обнаружил кандидата!</string>
     <string name="noti_detected_title">Найден кандидат для встречи</string>
     <string name="noti_detected_text">Подтвердите Ваше согласие</string>
-    <string name="cdialog_title">Ожидайте согласия от</string>
+    <string name="cdialog_title">Подтверждение встречи</string>
+    <string name="cdialog_text">Ожидайте согласия от</string>
     <string name="cnoti_confirmation_ticker">Ожидайте согласия пользователя!</string>
     <string name="cnoti_confirmation_title">Подтверждение согласия на встречу</string>
     <string name="cnoti_confirmation_text">Ожидайте подтверждения пользователя на встречу</string>

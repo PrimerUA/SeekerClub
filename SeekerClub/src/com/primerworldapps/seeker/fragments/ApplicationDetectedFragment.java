@@ -41,7 +41,7 @@ public class ApplicationDetectedFragment extends SherlockFragment {
 
 	private int NOTI_CODE = 2;
 	private long TWO_MINUTES = 120000;
-	
+
 	private Intent confirmationService;
 
 	@Override
@@ -49,7 +49,7 @@ public class ApplicationDetectedFragment extends SherlockFragment {
 		view = inflater.inflate(R.layout.application_detected_fragment, container, false);
 
 		confirmationService = new Intent(getActivity(), ConfirmationService.class);
-		
+
 		Button cancelButton = (Button) view.findViewById(R.id.application_noButton);
 		cancelButton.setOnClickListener(new OnClickListener() {
 
@@ -172,9 +172,9 @@ public class ApplicationDetectedFragment extends SherlockFragment {
 
 	private void showConfirmationProgress() {
 		confirmationProgressDialog = new Dialog(getActivity());
-
+		confirmationProgressDialog.setTitle(R.string.cdialog_title);
 		confirmationProgressDialog.setContentView(R.layout.confirm_progress_dialog);
-		//confirmationProgressDialog.setCancelable(false);
+		// confirmationProgressDialog.setCancelable(false);
 
 		TextView nameText = (TextView) confirmationProgressDialog.findViewById(R.id.confirmProgress_nameText);
 		nameText.setText(seekerDetectedApplication.getName());
@@ -195,10 +195,10 @@ public class ApplicationDetectedFragment extends SherlockFragment {
 			}
 		};
 		count.start();
-		
-		//кандидат подтвердил встречу
+
+		// кандидат подтвердил встречу
 		confirmationProgressDialog.setOnCancelListener(new OnCancelListener() {
-			
+
 			@Override
 			public void onCancel(DialogInterface dialog) {
 				closeFragment();
@@ -211,7 +211,7 @@ public class ApplicationDetectedFragment extends SherlockFragment {
 		confirmationProgressDialog.dismiss();
 		getActivity().stopService(confirmationService);
 	}
-	
+
 	private void backFragment() {
 		count.cancel();
 		SeekerHolderScreen seekerHolderScreen = (SeekerHolderScreen) getActivity();

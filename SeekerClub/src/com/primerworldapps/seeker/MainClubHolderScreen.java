@@ -15,13 +15,14 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.plus.PlusClient;
 import com.google.android.gms.plus.PlusClient.OnAccessRevokedListener;
 import com.primerworldapps.seeker.entity.SeekerUser;
+import com.primerworldapps.seeker.fragments.MeetingsClubFragment;
 import com.primerworldapps.seeker.fragments.MenuClubFragment;
 import com.primerworldapps.seeker.util.PlusClientAuthenticator;
 import com.primerworldapps.seeker.util.PreferencesController;
 
 public class MainClubHolderScreen extends SherlockFragmentActivity {
 
-	private final int STEPS = 1;
+	private final int STEPS = 2;
 	private Fragment[] fragments = new Fragment[STEPS];
 
 	private int currentFragment;
@@ -41,8 +42,7 @@ public class MainClubHolderScreen extends SherlockFragmentActivity {
 		FragmentManager fm = getSupportFragmentManager();
 		MenuClubFragment startFragment = (MenuClubFragment) fm.findFragmentById(R.id.menuFragment);
 		fragments[0] = startFragment;
-		// fragments[1] = (SecondStepFragment)
-		// fm.findFragmentById(R.id.secondFragment);
+		fragments[1] = (MeetingsClubFragment) fm.findFragmentById(R.id.meetingFragment);
 		// fragments[2] = (ThirdStepFragment)
 		// fm.findFragmentById(R.id.thirdFragment);
 		// fragments[3] = (ApplicationSummaryFragment)

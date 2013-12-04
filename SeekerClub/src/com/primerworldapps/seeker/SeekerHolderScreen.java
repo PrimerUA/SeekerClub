@@ -84,8 +84,14 @@ public class SeekerHolderScreen extends SherlockFragmentActivity {
 		} else {
 			getSherlock().setTitle(getString(R.string.scan_3));
 		}
-		transaction.commit();
+		transaction.commitAllowingStateLoss();
 		return fragments[fragmentIndex];
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+	    outState.putString("WORKAROUND_FOR_BUG_19917_KEY", "WORKAROUND_FOR_BUG_19917_VALUE");
+	    super.onSaveInstanceState(outState);
 	}
 
 	@Override
