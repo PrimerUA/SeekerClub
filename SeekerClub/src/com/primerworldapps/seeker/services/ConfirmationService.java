@@ -28,9 +28,9 @@ public class ConfirmationService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TO-DO: отправка подтверждения на сервер
+		// TODO: отправка подтверждения на сервер
 		// запуск процедуры оиждания подтверждения на сервере
-		// каждуые 20 секунд посылать запрос на сервер и проверять состояние
+		// каждуые 10 секунд посылать запрос на сервер и проверять состояние
 		// подтверждения от второго пользователя
 
 		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

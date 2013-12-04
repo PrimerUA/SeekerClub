@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
@@ -14,7 +13,6 @@ import android.widget.RemoteViews;
 import com.primerworldapps.seeker.R;
 import com.primerworldapps.seeker.SeekerHolderScreen;
 import com.primerworldapps.seeker.entity.SeekerDetectedApplication;
-import com.primerworldapps.seeker.util.Constants;
 
 public class ScannerService extends Service {
 
@@ -30,10 +28,10 @@ public class ScannerService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TO-DO: отправка заявки на сервер
+		// TODO: отправка заявки на сервер
 		// запуск процедуры сканирования на сервере
 		// каждую минуту посылать запрос на сервер и проверять есть ли там новые
-		// заявки по указанным критериям
+		// заявки по указанным критериям - age gender
 
 		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		showScannerNotification();

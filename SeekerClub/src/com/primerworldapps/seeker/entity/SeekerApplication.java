@@ -3,7 +3,7 @@ package com.primerworldapps.seeker.entity;
 public class SeekerApplication {
 
 	private int id;
-	private int user_id;
+	private int userId;
 	
 	private double latitude;
 	private double longitude;
@@ -98,7 +98,7 @@ public class SeekerApplication {
 	}
 
 	public int getUserId() {
-		return user_id;
+		return userId;
 	}
 
 	public long getTime() {

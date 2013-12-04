@@ -5,7 +5,7 @@ public class SeekerDetectedApplication {
 	private static SeekerDetectedApplication instance = null;
 
 	private int id = 0;
-	private int user_id;
+	private int userId;
 	
 	private String name;
 	private int type;
@@ -72,11 +72,11 @@ public class SeekerDetectedApplication {
 	}
 
 	public int getUser_id() {
-		return user_id;
+		return userId;
 	}
 
 	public SeekerDetectedApplication setUser_id(int user_id) {
-		this.user_id = user_id;
+		this.userId = user_id;
 		return instance;
 	}
 

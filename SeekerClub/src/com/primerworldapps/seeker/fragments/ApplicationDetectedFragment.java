@@ -100,7 +100,6 @@ public class ApplicationDetectedFragment extends SherlockFragment {
 					public void onClick(DialogInterface confirmationProgressDialog, int arg1) {
 						confirmationProgressDialog.dismiss();
 						count.cancel();
-						// диалог ожидания реакции второго пользователя
 						getActivity().startService(confirmationService);
 						showConfirmationProgress();
 					}
